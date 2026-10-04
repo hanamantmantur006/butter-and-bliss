@@ -8,7 +8,9 @@
 ## 🌟 Key Features
 
 1. **Artisanal Catalog & Live Menus**
-   - 45+ Handcrafted Delicacies across Cakes, Pastries, Regional Sweets (North Indian, South Indian, Bengali, Maharashtrian), and Savory Bakes.
+   - 47 Handcrafted Delicacies across Cakes, Pastries & Desserts, Authentic Royal Mithai (Kaju Katli, Mysore Pak, Dharwad Peda, Ghewar, Sandesh, Modak, Puran Poli, Gujiya, Rasmalai, Rasgulla, Jalebi, Shrikhand, Gajar Ka Halwa), Savory Snacks, and Traditional Beverages.
+   - 100% Authentic, dedicated high-resolution photography for each delicacy matching its genuine culinary identity.
+   - Automated client cache invalidation (`CATALOG_VERSION` guard) ensuring immediate display of menu updates without manual browser data purges.
    - Dynamic portion/weight selection (500g, 1 kg, 2 kg, pcs) with real-time price updates.
    - Vegetarian and eggless filter options.
 
