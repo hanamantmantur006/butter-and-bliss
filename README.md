@@ -3,6 +3,8 @@
 > *"A Little Sweetness, A Lot of Happiness."*  
 > Handcrafted European gourmet patisserie and authentic 100% Desi Cow Ghee Indian regional mithai.
 
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/hanamantmantur006/butter-and-bliss)
+
 ---
 
 ## 🌟 Key Features
