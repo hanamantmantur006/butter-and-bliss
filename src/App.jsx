@@ -123,7 +123,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Caramelized butter sponge layered with homemade crunchy butterscotch cashew praline and cream.',
-    image: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1559622214-f8a9850965bb?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '500g', multiplier: 1 },
       { label: '1 kg', multiplier: 1.85 }
@@ -142,7 +142,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Feather-light sponge filled with juicy simmered pineapple pieces and non-dairy whipped cream.',
-    image: 'https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '500g', multiplier: 1 },
       { label: '1 kg', multiplier: 1.85 }
@@ -161,7 +161,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Pure natural vanilla sponge frosted with aerated buttercream and delicate white chocolate curls.',
-    image: 'https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '500g', multiplier: 1 },
       { label: '1 kg', multiplier: 1.85 }
@@ -180,7 +180,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Slow-baked cultured cream cheese slice resting on a spiced butter graham cracker crust.',
-    image: 'https://images.unsplash.com/photo-1524351199678-941a58a3df50?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '1 Slice', multiplier: 1 },
       { label: 'Whole Cake (1kg)', multiplier: 5.5 }
@@ -367,7 +367,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Light-as-air aerated dark chocolate mousse adorned with dark chocolate curls.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 Cup', multiplier: 1 }]
   },
   {
@@ -401,7 +401,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Diamond-shaped cashew fudge made with premium Goan cashews and finished with 99.9% pure silver vark.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
@@ -421,7 +421,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Tiny gram flour pearls fried in Vedic cow ghee, bound in saffron syrup with melon seeds.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
@@ -441,7 +441,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Slow-roasted nutty gram flour simmered in pure ghee, garnished with crushed cardamom and almond flakes.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -460,7 +460,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Plump juicy boondi globes prepared with pure cloves, golden raisins, and rich cashew nuts.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -499,7 +499,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Dark caramelized Dharwad milk mawa roasted slowly until bronze, dusted lightly with fine tagar sugar.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -518,7 +518,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Slow-simmered whole milk caramelized to a decadent toffee texture from North Karnataka.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/gajar_halwa.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -537,7 +537,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Chewy traditional Gokak treat loaded with organic jaggery, edible gum (dink), pistachios, and almonds.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -556,7 +556,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Golden-fried mawa and paneer spheres soaked warm in rose water and crushed cardamom syrup.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/gulab_jamun.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 6', multiplier: 5.8 },
@@ -576,7 +576,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Slow-fried to dark caramelized crust with a pistachio and saffron core.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 6', multiplier: 5.8 }
@@ -595,7 +595,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Porous, light cow milk cottage cheese dumplings simmered in clear, fragrant cardamom nectar.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasgulla.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Can of 6', multiplier: 5.8 }
@@ -614,7 +614,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Soft flattened chenna discs submerged in chilled thickened saffron milk, flecked with pistachios.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Pack of 4', multiplier: 3.9 }
@@ -633,7 +633,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Elongated chenna sweet stuffed with sweetened mawa cream and rolled in desiccated coconut.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -649,7 +649,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Delicate fresh chenna kneaded with authentic winter date palm jaggery from Bengal.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -665,7 +665,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'King-sized rasgulla stuffed with roasted almonds and steeped in fragrant Kashmiri kesar syrup.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasgulla.jpg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -681,7 +681,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Swirling pretzel coils fried crisp in hot cow ghee, bursting with warm saffron syrup.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/jalebi.jpg',
     weightOptions: [
       { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
@@ -701,7 +701,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Geometrically piped black gram batter fried golden and steeped in rose-cardamom syrup.',
-    image: 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1760263215450-b13943da7e17?auto=format&fit=crop&w=800&q=80',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -720,7 +720,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Multi-layered flaky donut sweet fried in desi ghee with crisp glaze outside and melt within.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/jalebi.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -739,7 +739,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Crisp honeycomb disc deep-fried in desi ghee, crowned with condensed Rabri and silver vark.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [
       { label: '500g', multiplier: 0.55 },
       { label: '1 kg', multiplier: 1 }
@@ -758,7 +758,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Deep roasted brown khoya fudge packed with freshly ground green cardamom.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -796,7 +796,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Delicate steamed rice flour dumplings filled with freshly grated coconut and melted organic jaggery.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasgulla.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 5', multiplier: 4.8 }
@@ -815,7 +815,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Crisp half-moon pastry shell stuffed with dry fruits, roasted semolina, and grated coconut.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/jalebi.jpg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -831,7 +831,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Freshly grated coastal coconut cooked with milk, organic cane sugar, and aromatic cardamom seeds.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -850,7 +850,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Pure whole cow milk condensed slowly in cast iron kadhais to tender velvety squares.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -869,7 +869,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Finely blanched California almonds made into royal melt-in-mouth diamonds with saffron.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -888,7 +888,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Spun sugar and roasted chickpea flour confection topped with crushed pistachios.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -907,7 +907,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Grainy, moist milk cake prepared through slow artisanal condensation of fresh farm milk.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -926,7 +926,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Clotted cream layers suspended in thick saffron-cardamom condensed milk, served in earthenware.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 serving (150g)', multiplier: 1 }]
   },
   {
@@ -942,7 +942,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Velvety whipped hung curd flavored with pure Kashmiri saffron and crushed green pistachios.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 serving (200g)', multiplier: 1 }, { label: '500g Tub', multiplier: 2.3 }]
   },
   {
@@ -958,7 +958,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Slow-thickened whole milk infused with nutmeg, saffron, and sliced California almond flakes.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 serving (200ml)', multiplier: 1 }]
   },
   {
@@ -974,7 +974,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Crispy fried sweet pancakes topped with hot thick rabri, pistachio nuts, and cardamom drizzle.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/jalebi.jpg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -990,7 +990,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Natural dried Turkish figs pureed with cashews and pistachios with zero refined sugar.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1009,7 +1009,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Dates, pistachios, almonds, cashews, and organic figs rolled in toasted poppy seeds.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1028,7 +1028,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Roasted white sesame seeds bound with organic Kolhapuri jaggery and crushed peanuts.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1047,7 +1047,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Roasted semolina in golden cow ghee with fresh grated coconut and green raisins.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/motichoor.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1066,7 +1066,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Multi-layered flaky pastry swirls dusted with confectioners sugar and rose cardamom snow.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/jalebi.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1085,7 +1085,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Fermented raw rice flour and dark jaggery pastry fried in pure sesame and ghee blend.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/gulab_jamun.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1104,7 +1104,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Andhra heritage delicacy prepared with fresh rice dough, jaggery syrup, and sesame seeds.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/gulab_jamun.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -1123,7 +1123,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Gossamer-thin rice starch edible wrappers stuffed with powdered dry fruits, jaggery, and pure cow ghee.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/kaju_katli.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 5', multiplier: 4.8 }
@@ -1142,7 +1142,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Crisp deep-fried spheres made with roasted rice, mashed Kerala bananas, coconut bits, and melted jaggery.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/gulab_jamun.jpg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }, { label: 'Pack of 6', multiplier: 5.5 }]
   },
   {
@@ -1158,7 +1158,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'South Indian steamed rice dumplings packed with fresh coconut, cardamom, and palm jaggery.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasgulla.jpg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -1174,7 +1174,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Chilled pudding of tender coconut pulp and thickened coconut milk with roasted cashew nuts.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/rasmalai.webp',
     weightOptions: [{ label: '1 serving (200ml)', multiplier: 1 }]
   },
 
@@ -1304,7 +1304,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Golden flaky pastry triangle filled with potato, green peas, and fragrant Garam Masala.',
-    image: 'https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80',
+    image: '/images/sweets/samosa.jpeg',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -1320,7 +1320,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Puff pastry square bursting with marinated Malai paneer cubes tossed in tandoori spices.',
-    image: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
   },
   {
@@ -2113,7 +2113,7 @@ function HomePage({ onExploreMenu, onOrderNow, onAddToCart, products, showToast 
 
                 <div className="absolute -bottom-6 -left-6 bg-white p-3.5 rounded-2xl shadow-xl border border-[#E8DFD8] flex items-center gap-3">
                   <img
-                    src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=200&q=80"
+                    src="/images/sweets/kaju_katli.jpg"
                     alt="Kaju Katli"
                     className="w-12 h-12 rounded-xl object-cover"
                   />
@@ -2272,12 +2272,12 @@ function HomePage({ onExploreMenu, onOrderNow, onAddToCart, products, showToast 
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-4">
             <img
-              src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=600&q=80"
+              src="/images/sweets/motichoor.jpg"
               alt="Motichoor Laddu"
               className="rounded-2xl shadow-lg object-cover h-56 w-full border-2 border-[#542B22]"
             />
             <img
-              src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80"
+              src="/images/sweets/kaju_katli.jpg"
               alt="Indian Sweets Platter"
               className="rounded-2xl shadow-lg object-cover h-56 w-full border-2 border-[#542B22] translate-y-4"
             />
