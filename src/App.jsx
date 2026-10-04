@@ -239,7 +239,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Fluffy cocoa sponge slice covered in dark Belgian glaze with edible golden leaf.',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 pc', multiplier: 1 }, { label: 'Pack of 2', multiplier: 1.9 }]
   },
   {
@@ -287,7 +287,7 @@ const INITIAL_PRODUCTS = [
     isVeg: true,
     available: true,
     description: 'Decadent chocolate square loaded with toasted Kashmiri walnuts and melted chocolate chunks.',
-    image: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1607920591413-4ec007e70023?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 pc', multiplier: 1 }, { label: 'Box of 4', multiplier: 3.8 }]
   },
   {
@@ -387,7 +387,7 @@ const INITIAL_PRODUCTS = [
     weightOptions: [{ label: '1 pc', multiplier: 1 }, { label: 'Box of 6', multiplier: 5.5 }]
   },
 
-  // --- AUTHENTIC INDIAN SWEETS ---
+    // --- AUTHENTIC ROYAL INDIAN SWEETS ---
   {
     id: 's1',
     name: 'Silver Vark Kaju Katli',
@@ -429,44 +429,6 @@ const INITIAL_PRODUCTS = [
     ]
   },
   {
-    id: 's3',
-    name: 'Kashmiri Besan Laddu',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 450,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 145,
-    badge: 'Desi Ghee',
-    isVeg: true,
-    available: true,
-    description: 'Slow-roasted nutty gram flour simmered in pure ghee, garnished with crushed cardamom and almond flakes.',
-    image: '/images/sweets/motichoor.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's4',
-    name: 'Traditional Boondi Laddu',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.7,
-    reviews: 95,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Plump juicy boondi globes prepared with pure cloves, golden raisins, and rich cashew nuts.',
-    image: '/images/sweets/motichoor.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
     id: 's5',
     name: 'Melt-in-Mouth Mysore Pak',
     category: 'Indian Sweets',
@@ -478,8 +440,8 @@ const INITIAL_PRODUCTS = [
     badge: 'Royal Heritage',
     isVeg: true,
     available: true,
-    description: 'Authentic royal Mysore palace fudge crafted with gram flour and sizzling hot cow ghee.',
-    image: 'https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=800&q=80',
+    description: 'Authentic royal Mysore palace fudge crafted with roasted gram flour and sizzling hot desi cow ghee.',
+    image: '/images/sweets/mysore_pak.jpg',
     weightOptions: [
       { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
@@ -498,47 +460,10 @@ const INITIAL_PRODUCTS = [
     badge: 'GI Heritage',
     isVeg: true,
     available: true,
-    description: 'Dark caramelized Dharwad milk mawa roasted slowly until bronze, dusted lightly with fine tagar sugar.',
-    image: '/images/sweets/kaju_katli.jpg',
+    description: 'Dark caramelized Dharwad buffalo milk mawa roasted slowly until bronze, dusted lightly with fine tagar sugar.',
+    image: '/images/sweets/dharwad_peda.jpg',
     weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's7',
-    name: 'Belagavi Special Kunda',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 500,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 94,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Slow-simmered whole milk caramelized to a decadent toffee texture from North Karnataka.',
-    image: '/images/sweets/gajar_halwa.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's8',
-    name: 'Dharwad Karadantu',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 800,
-    priceUnit: '1 kg',
-    rating: 4.9,
-    reviews: 110,
-    badge: 'Nutrient Rich',
-    isVeg: true,
-    available: true,
-    description: 'Chewy traditional Gokak treat loaded with organic jaggery, edible gum (dink), pistachios, and almonds.',
-    image: '/images/sweets/kaju_katli.jpg',
-    weightOptions: [
+      { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
     ]
@@ -555,31 +480,12 @@ const INITIAL_PRODUCTS = [
     badge: 'All-time Hit',
     isVeg: true,
     available: true,
-    description: 'Golden-fried mawa and paneer spheres soaked warm in rose water and crushed cardamom syrup.',
+    description: 'Golden-fried mawa and paneer spheres soaked warm in rose water and crushed green cardamom syrup.',
     image: '/images/sweets/gulab_jamun.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 6', multiplier: 5.8 },
       { label: 'Box of 12', multiplier: 11 }
-    ]
-  },
-  {
-    id: 's10',
-    name: 'Crispy Caramel Kala Jamun',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 35,
-    priceUnit: '1 pc',
-    rating: 4.9,
-    reviews: 140,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Slow-fried to dark caramelized crust with a pistachio and saffron core.',
-    image: 'https://images.unsplash.com/photo-1590779033100-9f60a05a013d?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [
-      { label: '1 pc', multiplier: 1 },
-      { label: 'Box of 6', multiplier: 5.8 }
     ]
   },
   {
@@ -598,7 +504,8 @@ const INITIAL_PRODUCTS = [
     image: '/images/sweets/rasgulla.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
-      { label: 'Can of 6', multiplier: 5.8 }
+      { label: 'Box of 6', multiplier: 5.8 },
+      { label: 'Box of 12', multiplier: 11 }
     ]
   },
   {
@@ -610,77 +517,48 @@ const INITIAL_PRODUCTS = [
     priceUnit: '1 pc',
     rating: 5.0,
     reviews: 490,
-    badge: 'Royal Favorite',
+    badge: 'Chef Special',
     isVeg: true,
     available: true,
-    description: 'Soft flattened chenna discs submerged in chilled thickened saffron milk, flecked with pistachios.',
+    description: 'Velvety cottage cheese discs steeped in Kashmiri saffron infused thickened rabri milk with pistachios.',
     image: '/images/sweets/rasmalai.webp',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
-      { label: 'Pack of 4', multiplier: 3.9 }
+      { label: 'Pack of 4', multiplier: 3.8 }
     ]
   },
   {
-    id: 's13',
-    name: 'Bengali Cham Cham',
-    category: 'Indian Sweets',
-    subCategory: 'Bengali',
-    basePrice: 50,
-    priceUnit: '1 pc',
-    rating: 4.7,
-    reviews: 88,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Elongated chenna sweet stuffed with sweetened mawa cream and rolled in desiccated coconut.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
     id: 's14',
-    name: 'Nolen Gur Sandesh',
+    name: 'Authentic Bengali Sandesh',
     category: 'Indian Sweets',
     subCategory: 'Bengali',
-    basePrice: 50,
-    priceUnit: '1 pc',
-    rating: 4.9,
-    reviews: 130,
-    badge: 'Specialty',
-    isVeg: true,
-    available: true,
-    description: 'Delicate fresh chenna kneaded with authentic winter date palm jaggery from Bengal.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
-    id: 's15',
-    name: 'Shahi Kesar Rajbhog',
-    category: 'Indian Sweets',
-    subCategory: 'Bengali',
-    basePrice: 60,
+    basePrice: 40,
     priceUnit: '1 pc',
     rating: 4.8,
-    reviews: 95,
-    badge: null,
+    reviews: 130,
+    badge: 'Pure Chena',
     isVeg: true,
     available: true,
-    description: 'King-sized rasgulla stuffed with roasted almonds and steeped in fragrant Kashmiri kesar syrup.',
-    image: '/images/sweets/rasgulla.jpg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
+    description: 'Delicate Bengali cottage cheese confectionery hand-moulded with aromatic green cardamom and saffron.',
+    image: '/images/sweets/sandesh.jpg',
+    weightOptions: [
+      { label: '1 pc', multiplier: 1 },
+      { label: 'Box of 6', multiplier: 5.8 }
+    ]
   },
   {
     id: 's16',
     name: 'Pure Ghee Jalebi (Crisp & Hot)',
     category: 'Indian Sweets',
     subCategory: 'North Indian',
-    basePrice: 300,
+    basePrice: 400,
     priceUnit: '1 kg',
     rating: 4.9,
-    reviews: 320,
-    badge: 'Fresh & Crisp',
+    reviews: 340,
+    badge: 'Live Counter',
     isVeg: true,
     available: true,
-    description: 'Swirling pretzel coils fried crisp in hot cow ghee, bursting with warm saffron syrup.',
+    description: 'Fermented batter swirls deep-fried in sizzling cow ghee and dipped hot in fragrant saffron-rose syrup.',
     image: '/images/sweets/jalebi.jpg',
     weightOptions: [
       { label: '250g', multiplier: 0.28 },
@@ -689,77 +567,37 @@ const INITIAL_PRODUCTS = [
     ]
   },
   {
-    id: 's17',
-    name: 'Shahi Urad Imarti',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 110,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Geometrically piped black gram batter fried golden and steeped in rose-cardamom syrup.',
-    image: 'https://images.unsplash.com/photo-1760263215450-b13943da7e17?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's18',
-    name: 'Flaky Balushahi',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.7,
-    reviews: 82,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Multi-layered flaky donut sweet fried in desi ghee with crisp glaze outside and melt within.',
-    image: '/images/sweets/jalebi.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
     id: 's19',
     name: 'Jaipuri Malai Ghewar',
     category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 600,
-    priceUnit: '1 kg',
-    rating: 5.0,
-    reviews: 280,
-    badge: 'Festive Special',
+    subCategory: 'Festival Specials',
+    basePrice: 450,
+    priceUnit: '1 pc (400g)',
+    rating: 4.9,
+    reviews: 215,
+    badge: 'Royal Rajasthan',
     isVeg: true,
     available: true,
-    description: 'Crisp honeycomb disc deep-fried in desi ghee, crowned with condensed Rabri and silver vark.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [
-      { label: '500g', multiplier: 0.55 },
-      { label: '1 kg', multiplier: 1 }
-    ]
+    description: 'Honeycomb crisp disc soaked in sugar syrup, crowned with a thick layer of creamy malai rabri and pistachios.',
+    image: '/images/sweets/ghevar.jpg',
+    weightOptions: [{ label: '1 pc (400g)', multiplier: 1 }]
   },
   {
     id: 's20',
     name: 'Mathura Mawa Peda',
     category: 'Indian Sweets',
     subCategory: 'North Indian',
-    basePrice: 450,
+    basePrice: 550,
     priceUnit: '1 kg',
     rating: 4.8,
-    reviews: 130,
-    badge: null,
+    reviews: 165,
+    badge: 'Brij Heritage',
     isVeg: true,
     available: true,
-    description: 'Deep roasted brown khoya fudge packed with freshly ground green cardamom.',
-    image: '/images/sweets/kaju_katli.jpg',
+    description: 'Traditional slow-roasted milk mawa round pedas prepared according to timeless Mathura recipes.',
+    image: '/images/sweets/mathura_peda.jpg',
     weightOptions: [
+      { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
     ]
@@ -772,12 +610,12 @@ const INITIAL_PRODUCTS = [
     basePrice: 60,
     priceUnit: '1 pc',
     rating: 4.9,
-    reviews: 210,
-    badge: 'Traditional',
+    reviews: 190,
+    badge: 'Festive Classic',
     isVeg: true,
     available: true,
-    description: 'Paper-thin wheat flatbread stuffed with spiced chana dal and organic jaggery, drenched in tup (ghee).',
-    image: 'https://images.unsplash.com/photo-1626074353765-517a681e40be?auto=format&fit=crop&w=800&q=80',
+    description: 'Warm whole wheat flatbread stuffed with fragrant chana dal, organic jaggery, cardamom and nutmeg, roasted in pure ghee.',
+    image: '/images/sweets/puran_poli.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Pack of 4', multiplier: 3.8 }
@@ -791,12 +629,12 @@ const INITIAL_PRODUCTS = [
     basePrice: 50,
     priceUnit: '1 pc',
     rating: 5.0,
-    reviews: 310,
-    badge: 'Ganesh Favorite',
+    reviews: 360,
+    badge: 'Ganesh Utsav',
     isVeg: true,
     available: true,
-    description: 'Delicate steamed rice flour dumplings filled with freshly grated coconut and melted organic jaggery.',
-    image: '/images/sweets/rasgulla.jpg',
+    description: 'Traditional steamed rice flour dumplings filled with fresh grated coconut, jaggery, nutmeg and a drizzle of cow ghee.',
+    image: '/images/sweets/modak.jpg',
     weightOptions: [
       { label: '1 pc', multiplier: 1 },
       { label: 'Box of 5', multiplier: 4.8 }
@@ -807,69 +645,15 @@ const INITIAL_PRODUCTS = [
     name: 'Crispy Karanji / Gujiya',
     category: 'Indian Sweets',
     subCategory: 'Gujarati & Maharashtrian',
-    basePrice: 40,
-    priceUnit: '1 pc',
-    rating: 4.8,
-    reviews: 140,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Crisp half-moon pastry shell stuffed with dry fruits, roasted semolina, and grated coconut.',
-    image: '/images/sweets/jalebi.jpg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
-    id: 's24',
-    name: 'Fresh Coconut Barfi',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.7,
-    reviews: 70,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Freshly grated coastal coconut cooked with milk, organic cane sugar, and aromatic cardamom seeds.',
-    image: '/images/sweets/kaju_katli.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's25',
-    name: 'Creamy Milk Barfi',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
     basePrice: 500,
     priceUnit: '1 kg',
     rating: 4.8,
-    reviews: 110,
-    badge: null,
+    reviews: 180,
+    badge: 'Holi & Diwali',
     isVeg: true,
     available: true,
-    description: 'Pure whole cow milk condensed slowly in cast iron kadhais to tender velvety squares.',
-    image: '/images/sweets/kaju_katli.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's26',
-    name: 'Shahi Badam Barfi',
-    category: 'Indian Sweets',
-    subCategory: 'Festival Specials',
-    basePrice: 900,
-    priceUnit: '1 kg',
-    rating: 4.9,
-    reviews: 160,
-    badge: 'Premium',
-    isVeg: true,
-    available: true,
-    description: 'Finely blanched California almonds made into royal melt-in-mouth diamonds with saffron.',
-    image: '/images/sweets/kaju_katli.jpg',
+    description: 'Golden flaky crescent pastries stuffed with toasted mawa, dry coconut, raisins, and roasted nuts.',
+    image: '/images/sweets/gujiya.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
@@ -879,306 +663,62 @@ const INITIAL_PRODUCTS = [
     id: 's27',
     name: 'Flaky Soan Papdi',
     category: 'Indian Sweets',
-    subCategory: 'North Indian',
+    subCategory: 'Festival Specials',
     basePrice: 350,
     priceUnit: '1 kg',
-    rating: 4.6,
-    reviews: 74,
+    rating: 4.7,
+    reviews: 175,
     badge: null,
     isVeg: true,
     available: true,
-    description: 'Spun sugar and roasted chickpea flour confection topped with crushed pistachios.',
-    image: '/images/sweets/kaju_katli.jpg',
+    description: 'Delicately layered gram flour threads pulled with pure ghee, garnished with sliced pistachios and almonds.',
+    image: '/images/sweets/soan_papdi.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
     ]
-  },
-  {
-    id: 's28',
-    name: 'Alwar Special Kalakand',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 500,
-    priceUnit: '1 kg',
-    rating: 4.9,
-    reviews: 190,
-    badge: 'Moist & Grainy',
-    isVeg: true,
-    available: true,
-    description: 'Grainy, moist milk cake prepared through slow artisanal condensation of fresh farm milk.',
-    image: '/images/sweets/kaju_katli.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's29',
-    name: 'Lachha Rabri Matka',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 100,
-    priceUnit: '1 serving',
-    rating: 5.0,
-    reviews: 320,
-    badge: 'Clay Matka',
-    isVeg: true,
-    available: true,
-    description: 'Clotted cream layers suspended in thick saffron-cardamom condensed milk, served in earthenware.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 serving (150g)', multiplier: 1 }]
   },
   {
     id: 's30',
     name: 'Kesar Pista Shrikhand',
     category: 'Indian Sweets',
     subCategory: 'Gujarati & Maharashtrian',
-    basePrice: 100,
-    priceUnit: '1 serving',
-    rating: 4.9,
-    reviews: 180,
-    badge: 'Chilled',
-    isVeg: true,
-    available: true,
-    description: 'Velvety whipped hung curd flavored with pure Kashmiri saffron and crushed green pistachios.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 serving (200g)', multiplier: 1 }, { label: '500g Tub', multiplier: 2.3 }]
-  },
-  {
-    id: 's31',
-    name: 'Almond Rich Basundi',
-    category: 'Indian Sweets',
-    subCategory: 'Gujarati & Maharashtrian',
-    basePrice: 120,
-    priceUnit: '1 serving',
-    rating: 4.8,
-    reviews: 85,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Slow-thickened whole milk infused with nutmeg, saffron, and sliced California almond flakes.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 serving (200ml)', multiplier: 1 }]
-  },
-  {
-    id: 's32',
-    name: 'Rabri Malpua',
-    category: 'Indian Sweets',
-    subCategory: 'North Indian',
-    basePrice: 60,
-    priceUnit: '1 pc',
-    rating: 4.9,
-    reviews: 210,
-    badge: 'Festive',
-    isVeg: true,
-    available: true,
-    description: 'Crispy fried sweet pancakes topped with hot thick rabri, pistachio nuts, and cardamom drizzle.',
-    image: '/images/sweets/jalebi.jpg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
-    id: 's33',
-    name: 'Royal Anjeer Barfi',
-    category: 'Indian Sweets',
-    subCategory: 'Festival Specials',
-    basePrice: 900,
+    basePrice: 350,
     priceUnit: '1 kg',
     rating: 4.9,
-    reviews: 130,
-    badge: 'No Added Sugar',
+    reviews: 230,
+    badge: 'Creamy Delight',
     isVeg: true,
     available: true,
-    description: 'Natural dried Turkish figs pureed with cashews and pistachios with zero refined sugar.',
-    image: '/images/sweets/kaju_katli.jpg',
+    description: 'Dense velvety hung curd blended with crushed green cardamom, saffron strands, and slivered pistachios.',
+    image: '/images/sweets/shrikhand.jpg',
     weightOptions: [
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
     ]
   },
   {
-    id: 's34',
-    name: 'Kashmiri Dry Fruit Laddu',
+    id: 's44',
+    name: 'Shahi Gajar Ka Halwa',
     category: 'Indian Sweets',
     subCategory: 'Festival Specials',
-    basePrice: 800,
+    basePrice: 600,
     priceUnit: '1 kg',
-    rating: 4.9,
-    reviews: 170,
-    badge: 'Energy Boost',
-    isVeg: true,
-    available: true,
-    description: 'Dates, pistachios, almonds, cashews, and organic figs rolled in toasted poppy seeds.',
-    image: '/images/sweets/motichoor.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's35',
-    name: 'Makar Sankranti Til Laddu',
-    category: 'Indian Sweets',
-    subCategory: 'Festival Specials',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.7,
-    reviews: 65,
+    rating: 5.0,
+    reviews: 310,
     badge: 'Winter Special',
     isVeg: true,
     available: true,
-    description: 'Roasted white sesame seeds bound with organic Kolhapuri jaggery and crushed peanuts.',
-    image: '/images/sweets/motichoor.jpg',
+    description: 'Red Delhi carrots slow-simmered in rich buffalo milk, roasted in desi ghee and garnished with cashews and rose petals.',
+    image: '/images/sweets/gajar_halwa.jpg',
     weightOptions: [
+      { label: '250g', multiplier: 0.28 },
       { label: '500g', multiplier: 0.52 },
       { label: '1 kg', multiplier: 1 }
     ]
-  },
-  {
-    id: 's36',
-    name: 'Ghee Roasted Rava Laddu',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 90,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Roasted semolina in golden cow ghee with fresh grated coconut and green raisins.',
-    image: '/images/sweets/motichoor.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's37',
-    name: 'Maharashtrian Chirote',
-    category: 'Indian Sweets',
-    subCategory: 'Gujarati & Maharashtrian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.7,
-    reviews: 58,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Multi-layered flaky pastry swirls dusted with confectioners sugar and rose cardamom snow.',
-    image: '/images/sweets/jalebi.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's38',
-    name: 'Tamil Adhirasam',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 350,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 77,
-    badge: 'Traditional',
-    isVeg: true,
-    available: true,
-    description: 'Fermented raw rice flour and dark jaggery pastry fried in pure sesame and ghee blend.',
-    image: '/images/sweets/gulab_jamun.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's39',
-    name: 'Andhra Ghee Ariselu',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 400,
-    priceUnit: '1 kg',
-    rating: 4.8,
-    reviews: 84,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Andhra heritage delicacy prepared with fresh rice dough, jaggery syrup, and sesame seeds.',
-    image: '/images/sweets/gulab_jamun.jpg',
-    weightOptions: [
-      { label: '500g', multiplier: 0.52 },
-      { label: '1 kg', multiplier: 1 }
-    ]
-  },
-  {
-    id: 's40',
-    name: 'Atreyapuram Pootharekulu',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 60,
-    priceUnit: '1 pc',
-    rating: 5.0,
-    reviews: 195,
-    badge: 'Paper Sweet',
-    isVeg: true,
-    available: true,
-    description: 'Gossamer-thin rice starch edible wrappers stuffed with powdered dry fruits, jaggery, and pure cow ghee.',
-    image: '/images/sweets/kaju_katli.jpg',
-    weightOptions: [
-      { label: '1 pc', multiplier: 1 },
-      { label: 'Box of 5', multiplier: 4.8 }
-    ]
-  },
-  {
-    id: 's41',
-    name: 'Kerala Unniyappam',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 25,
-    priceUnit: '1 pc',
-    rating: 4.7,
-    reviews: 62,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Crisp deep-fried spheres made with roasted rice, mashed Kerala bananas, coconut bits, and melted jaggery.',
-    image: '/images/sweets/gulab_jamun.jpg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }, { label: 'Pack of 6', multiplier: 5.5 }]
-  },
-  {
-    id: 's42',
-    name: 'Steamed Kozhukattai',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 40,
-    priceUnit: '1 pc',
-    rating: 4.8,
-    reviews: 53,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'South Indian steamed rice dumplings packed with fresh coconut, cardamom, and palm jaggery.',
-    image: '/images/sweets/rasgulla.jpg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
-    id: 's43',
-    name: 'Tender Coconut (Elaneer) Payasam',
-    category: 'Indian Sweets',
-    subCategory: 'South Indian',
-    basePrice: 100,
-    priceUnit: '1 serving',
-    rating: 5.0,
-    reviews: 240,
-    badge: 'Kerala Special',
-    isVeg: true,
-    available: true,
-    description: 'Chilled pudding of tender coconut pulp and thickened coconut milk with roasted cashew nuts.',
-    image: '/images/sweets/rasmalai.webp',
-    weightOptions: [{ label: '1 serving (200ml)', multiplier: 1 }]
   },
 
-  // --- COOKIES AND SNACKS ---
+  // --- COOKIES, SNACKS & BEVERAGES ---
   {
     id: 'k1',
     name: 'Belgian Chocolate Chip Cookies',
@@ -1216,63 +756,15 @@ const INITIAL_PRODUCTS = [
     name: 'Roasted Almond Cookies',
     category: 'Cookies & Snacks',
     subCategory: 'Cookies',
-    basePrice: 180,
+    basePrice: 140,
     priceUnit: '1 pack',
     rating: 4.8,
-    reviews: 62,
+    reviews: 80,
     badge: null,
     isVeg: true,
     available: true,
-    description: 'Crunchy butter cookies packed with roasted California almonds and sea salt.',
+    description: 'Rich buttery rounds encrusted with toasted California almond flakes.',
     image: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [{ label: '1 pack (200g)', multiplier: 1 }]
-  },
-  {
-    id: 'k4',
-    name: 'Old Delhi Ghee Nankhatai',
-    category: 'Cookies & Snacks',
-    subCategory: 'Cookies',
-    basePrice: 150,
-    priceUnit: '1 pack',
-    rating: 5.0,
-    reviews: 210,
-    badge: 'Desi Ghee',
-    isVeg: true,
-    available: true,
-    description: 'Traditional Indian shortbread baked with pure Bilona cow ghee, chickpea flour, and cardamom.',
-    image: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [{ label: '1 pack (250g)', multiplier: 1 }]
-  },
-  {
-    id: 'k5',
-    name: 'Karachi Tutti Frutti Biscuits',
-    category: 'Cookies & Snacks',
-    subCategory: 'Cookies',
-    basePrice: 120,
-    priceUnit: '1 pack',
-    rating: 4.7,
-    reviews: 110,
-    badge: null,
-    isVeg: true,
-    available: true,
-    description: 'Crunchy square biscuits studded with colorful candied papaya fruit and cashew bits.',
-    image: 'https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [{ label: '1 pack (250g)', multiplier: 1 }]
-  },
-  {
-    id: 'k6',
-    name: 'Crispy Butter Khari Biscuit',
-    category: 'Cookies & Snacks',
-    subCategory: 'Savory Snacks',
-    basePrice: 100,
-    priceUnit: '1 pack',
-    rating: 4.8,
-    reviews: 130,
-    badge: 'Tea Time Fav',
-    isVeg: true,
-    available: true,
-    description: 'Ultra flaky puff pastry biscuit with thousands of airy buttery layers, ideal for chai dunking.',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 pack (200g)', multiplier: 1 }]
   },
   {
@@ -1293,35 +785,22 @@ const INITIAL_PRODUCTS = [
   },
   {
     id: 'k8',
-    name: 'Crispy Spiced Veg Puff',
+    name: 'Punjabi Crispy Samosa',
     category: 'Cookies & Snacks',
     subCategory: 'Savory Snacks',
-    basePrice: 30,
-    priceUnit: '1 pc',
-    rating: 4.7,
-    reviews: 290,
+    basePrice: 40,
+    priceUnit: '2 pcs',
+    rating: 4.9,
+    reviews: 320,
     badge: 'Hot Seller',
     isVeg: true,
     available: true,
-    description: 'Golden flaky pastry triangle filled with potato, green peas, and fragrant Garam Masala.',
+    description: 'Crispy golden pastry crust stuffed with spiced potatoes, green peas, and fresh coriander, served with tangy tamarind & mint chutney.',
     image: '/images/sweets/samosa.jpeg',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
-  },
-  {
-    id: 'k9',
-    name: 'Spicy Paneer Tikka Puff',
-    category: 'Cookies & Snacks',
-    subCategory: 'Savory Snacks',
-    basePrice: 45,
-    priceUnit: '1 pc',
-    rating: 4.9,
-    reviews: 340,
-    badge: 'Best Snack',
-    isVeg: true,
-    available: true,
-    description: 'Puff pastry square bursting with marinated Malai paneer cubes tossed in tandoori spices.',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80',
-    weightOptions: [{ label: '1 pc', multiplier: 1 }]
+    weightOptions: [
+      { label: '2 pcs', multiplier: 1 },
+      { label: 'Plate of 4', multiplier: 1.9 }
+    ]
   },
   {
     id: 'k10',
@@ -1338,6 +817,70 @@ const INITIAL_PRODUCTS = [
     description: 'Layered with spiced mint chutney, crunchy cucumbers, tomatoes, and molten cheddar cheese.',
     image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=80',
     weightOptions: [{ label: '1 pc', multiplier: 1 }]
+  },
+  {
+    id: 'b1',
+    name: 'South Indian Filter Coffee',
+    category: 'Cookies & Snacks',
+    subCategory: 'Savory Snacks',
+    basePrice: 50,
+    priceUnit: '1 cup',
+    rating: 4.9,
+    reviews: 210,
+    badge: 'Traditional',
+    isVeg: true,
+    available: true,
+    description: 'Strong chicory decoction brewed fresh with piping hot frothed whole milk in a traditional brass dabarah.',
+    image: '/images/sweets/filter_coffee.png',
+    weightOptions: [{ label: '1 cup (150ml)', multiplier: 1 }]
+  },
+  {
+    id: 'b2',
+    name: 'Kulhad Masala Chai',
+    category: 'Cookies & Snacks',
+    subCategory: 'Savory Snacks',
+    basePrice: 40,
+    priceUnit: '1 kulhad',
+    rating: 4.9,
+    reviews: 280,
+    badge: 'Earthy Aroma',
+    isVeg: true,
+    available: true,
+    description: 'Assam black tea simmered with fresh ginger, cardamom, cinnamon, and cloves served in an earthen clay pot.',
+    image: '/images/sweets/masala_chai.jpg',
+    weightOptions: [{ label: '1 kulhad (150ml)', multiplier: 1 }]
+  },
+  {
+    id: 'b3',
+    name: 'Alphonso Mango Lassi',
+    category: 'Cookies & Snacks',
+    subCategory: 'Savory Snacks',
+    basePrice: 90,
+    priceUnit: '1 glass',
+    rating: 5.0,
+    reviews: 350,
+    badge: 'Summer Special',
+    isVeg: true,
+    available: true,
+    description: 'Thick creamy churned yogurt blended with authentic Ratnagiri Alphonso mango pulp and saffron.',
+    image: '/images/sweets/mango_lassi.png',
+    weightOptions: [{ label: '1 glass (300ml)', multiplier: 1 }]
+  },
+  {
+    id: 'b4',
+    name: 'Royal Sweet Lassi',
+    category: 'Cookies & Snacks',
+    subCategory: 'Savory Snacks',
+    basePrice: 70,
+    priceUnit: '1 glass',
+    rating: 4.8,
+    reviews: 190,
+    badge: null,
+    isVeg: true,
+    available: true,
+    description: 'Traditional Punjabi churned yogurt drink crowned with thick clotted malai and crushed pistachio slivers.',
+    image: '/images/sweets/sweet_lassi.jpg',
+    weightOptions: [{ label: '1 glass (300ml)', multiplier: 1 }]
   }
 ];
 
@@ -1411,7 +954,7 @@ const INITIAL_ORDERS = [
     status: 'Confirmed',
     items: [
       { name: 'Melt-in-Mouth Mysore Pak', size: '1 kg', quantity: 2, unitPrice: 550, total: 1100 },
-      { name: 'Lachha Rabri Matka', size: '1 serving (150g)', quantity: 4, unitPrice: 100, total: 400 }
+      { name: 'Kesar Pista Rasmalai', size: 'Pack of 4', quantity: 2, unitPrice: 228, total: 456 }
     ],
     subtotal: 1500,
     deliveryFee: 0,
@@ -1450,12 +993,26 @@ export default function App() {
   const [cartDrawerOpen, setCartDrawerOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
 
-  // Application Data Persistence
+  const CATALOG_VERSION = 'v5_authentic_mithai';
+
+  // Application Data Persistence with Version Guard & Auto-Migration
   const [products, setProducts] = useState(() => {
     try {
+      const version = localStorage.getItem('bnb_catalog_version');
       const saved = localStorage.getItem('bnb_products');
-      return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
-    } catch {
+      if (version === CATALOG_VERSION && saved) {
+        return JSON.parse(saved);
+      }
+      // Purge legacy cached catalog from user's prior sessions
+      localStorage.removeItem('bnb_products');
+      localStorage.removeItem('bnb_products_v2');
+      localStorage.removeItem('bnb_products_v3');
+      localStorage.removeItem('bnb_products_v4');
+      localStorage.setItem('bnb_catalog_version', CATALOG_VERSION);
+      localStorage.setItem('bnb_products', JSON.stringify(INITIAL_PRODUCTS));
+      return INITIAL_PRODUCTS;
+    } catch (e) {
+      console.error('Catalog initialization error:', e);
       return INITIAL_PRODUCTS;
     }
   });
@@ -1511,6 +1068,20 @@ export default function App() {
   ]);
   const [appliedCoupon, setAppliedCoupon] = useState(null);
   const [couponInput, setCouponInput] = useState('');
+
+  // Ensure browser localStorage always invalidates stale cached product versions
+  useEffect(() => {
+    try {
+      const version = localStorage.getItem('bnb_catalog_version');
+      if (version !== CATALOG_VERSION) {
+        localStorage.setItem('bnb_catalog_version', CATALOG_VERSION);
+        localStorage.setItem('bnb_products', JSON.stringify(INITIAL_PRODUCTS));
+        setProducts(INITIAL_PRODUCTS);
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
 
   useEffect(() => {
     try {
@@ -4202,15 +3773,32 @@ function AdminDashboardPage({
       {/* Menu & Price Management */}
       {activeTab === 'menu' && (
         <div className="space-y-4">
-          <div className="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-[#EDE4DC]">
-            <p className="text-xs text-[#8C6D62]">Change prices, mark out-of-stock items, or add festive seasonal sweets.</p>
-            <button
-              onClick={openAddModal}
-              className="px-3.5 py-2 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold rounded-xl flex items-center gap-1.5 shadow"
-            >
-              <Plus className="w-3.5 h-3.5" />
-              <span>Add New Item</span>
-            </button>
+          <div className="flex justify-between items-center bg-white p-3.5 rounded-2xl border border-[#EDE4DC] flex-wrap gap-2">
+            <p className="text-xs text-[#8C6D62]">Change prices, mark out-of-stock items, or reset to the verified authentic menu.</p>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => {
+                  if (window.confirm("Reset entire menu to the verified authentic catalog with authentic photos?")) {
+                    localStorage.setItem('bnb_catalog_version', CATALOG_VERSION);
+                    localStorage.setItem('bnb_products', JSON.stringify(INITIAL_PRODUCTS));
+                    setProducts(INITIAL_PRODUCTS);
+                    showToast("Menu successfully reset to official authentic catalog!");
+                  }
+                }}
+                className="px-3 py-2 bg-amber-50 hover:bg-amber-100 text-[#3A1C16] text-xs font-bold rounded-xl flex items-center gap-1.5 border border-amber-300 transition-colors"
+                title="Reset to official authentic menu"
+              >
+                <RefreshCw className="w-3.5 h-3.5 text-[#C5892F]" />
+                <span>Reset to Official Menu</span>
+              </button>
+              <button
+                onClick={openAddModal}
+                className="px-3.5 py-2 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold rounded-xl flex items-center gap-1.5 shadow"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add New Item</span>
+              </button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
