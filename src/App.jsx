@@ -26,7 +26,9 @@ import {
   Package,
   MessageCircle,
   Edit2,
-  RefreshCw
+  RefreshCw,
+  QrCode,
+  Copy
 } from 'lucide-react';
 
 const INITIAL_PRODUCTS = [
@@ -1567,7 +1569,7 @@ export default function App() {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Mail className="w-4 h-4 text-[#D99B26]" />
-                  <span>orders@butterandbliss.in</span>
+                  <a href="mailto:hanamantmantur006@gmail.com" className="hover:text-white transition-colors">hanamantmantur006@gmail.com</a>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Clock className="w-4 h-4 text-[#D99B26]" />
@@ -2121,6 +2123,19 @@ function OrderOnlinePage({
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const [paymentSecurityModal, setPaymentSecurityModal] = useState(false);
   const [stagedOrderPayload, setStagedOrderPayload] = useState(null);
+  const [upiUtrInput, setUpiUtrInput] = useState('');
+  const [copiedUpi, setCopiedUpi] = useState(false);
+
+  const handleCopyUpi = () => {
+    try {
+      navigator.clipboard.writeText('9535839261@nyes');
+      setCopiedUpi(true);
+      showToast('UPI ID 9535839261@nyes copied to clipboard!');
+      setTimeout(() => setCopiedUpi(false), 2500);
+    } catch {
+      showToast('UPI ID: 9535839261@nyes');
+    }
+  };
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -2253,14 +2268,17 @@ function OrderOnlinePage({
         paymentId = 'cod_pending_cash';
       }
 
+      const utrSuffix = upiUtrInput.trim() ? ` (Ref: ${upiUtrInput.trim()})` : '';
+
       const finalizedOrder = {
         ...stagedOrderPayload,
         paymentStatus: stagedOrderPayload.paymentMethod === 'Cash on Delivery'
           ? 'COD (Pending delivery payment)'
-          : `Verified (${paymentId})`
+          : `Verified (${paymentId}${utrSuffix})`
       };
 
       setPaymentSecurityModal(false);
+      setUpiUtrInput('');
       onOrderPlaced(finalizedOrder, finalizedOrder.custKey);
     } catch {
       showToast('Payment verification failed! Please try again.');
@@ -2445,35 +2463,48 @@ function OrderOnlinePage({
               <h3 className="text-xs font-bold uppercase tracking-wider text-[#3A1C16]">2. Verified Payment Gateway</h3>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <label className={`p-3 rounded-xl border cursor-pointer flex flex-col justify-between text-xs transition ${
-                  paymentMethod === 'UPI' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold' : 'border-[#E8DFD8] text-[#5C3B30]'
+                  paymentMethod === 'UPI' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold shadow-xs' : 'border-[#E8DFD8] text-[#5C3B30]'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span>UPI / GPay / PhonePe</span>
+                    <span className="flex items-center gap-1.5">
+                      <QrCode className="w-4 h-4 text-[#C5892F]" />
+                      <span>Instant UPI QR Code</span>
+                    </span>
                     <input type="radio" name="payMethod" checked={paymentMethod === 'UPI'} onChange={() => setPaymentMethod('UPI')} className="accent-[#C5892F]" />
                   </div>
-                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">Encrypted instant settlement</span>
+                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">GPay, PhonePe, Paytm, BHIM</span>
                 </label>
 
                 <label className={`p-3 rounded-xl border cursor-pointer flex flex-col justify-between text-xs transition ${
-                  paymentMethod === 'Razorpay Online' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold' : 'border-[#E8DFD8] text-[#5C3B30]'
+                  paymentMethod === 'Razorpay Online' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold shadow-xs' : 'border-[#E8DFD8] text-[#5C3B30]'
                 }`}>
                   <div className="flex items-center justify-between">
-                    <span>Razorpay Gateway</span>
+                    <span>Online NetBanking / Card</span>
                     <input type="radio" name="payMethod" checked={paymentMethod === 'Razorpay Online'} onChange={() => setPaymentMethod('Razorpay Online')} className="accent-[#C5892F]" />
                   </div>
-                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">Cards, NetBanking, Wallets</span>
+                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">Debit, Credit & Wallets</span>
                 </label>
 
                 <label className={`p-3 rounded-xl border cursor-pointer flex flex-col justify-between text-xs transition ${
-                  paymentMethod === 'Cash on Delivery' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold' : 'border-[#E8DFD8] text-[#5C3B30]'
+                  paymentMethod === 'Cash on Delivery' ? 'border-[#C5892F] bg-[#FAF3EB] text-[#3A1C16] font-bold shadow-xs' : 'border-[#E8DFD8] text-[#5C3B30]'
                 }`}>
                   <div className="flex items-center justify-between">
                     <span>Cash on Delivery</span>
                     <input type="radio" name="payMethod" checked={paymentMethod === 'Cash on Delivery'} onChange={() => setPaymentMethod('Cash on Delivery')} className="accent-[#C5892F]" />
                   </div>
-                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">Pay cash upon verified delivery</span>
+                  <span className="text-[10px] text-[#8C6D62] mt-2 font-normal">Pay cash or UPI upon delivery</span>
                 </label>
               </div>
+
+              {/* Informative banner for online payment */}
+              {(paymentMethod === 'UPI' || paymentMethod === 'Razorpay Online') && (
+                <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-[#5C3B30] flex items-center gap-2.5">
+                  <QrCode className="w-4 h-4 text-[#C5892F] shrink-0" />
+                  <span>
+                    Official <strong>Bank of Baroda UPI QR Code (9535839261@nyes)</strong> will appear on screen for instant scanning when you click below.
+                  </span>
+                </div>
+              )}
             </div>
 
             <button
@@ -2578,36 +2609,145 @@ function OrderOnlinePage({
         </div>
       </div>
 
-      {/* Security Payment Handshake Modal */}
+      {/* Security Payment Handshake Modal / UPI QR Code */}
       {paymentSecurityModal && stagedOrderPayload && (
         <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs">
-          <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-4 border border-[#EDE4DC] shadow-2xl">
-            <div className="flex items-center space-x-3 text-[#3A1C16] border-b border-[#F2E8DF] pb-3">
-              <ShieldCheck className="w-6 h-6 text-[#D99B26]" />
-              <h3 className="font-serif font-bold text-lg">Secure Gateway Verification</h3>
-            </div>
-
-            <div className="text-xs text-[#5C3B30] space-y-2 bg-[#FAF7F3] p-4 rounded-2xl border border-[#EBDCD1]">
-              <p><strong>Order ID:</strong> {stagedOrderPayload.orderId}</p>
-              <p><strong>Recipient:</strong> {stagedOrderPayload.customerName} ({stagedOrderPayload.mobile})</p>
-              <p><strong>Authoritative Charge:</strong> ₹{stagedOrderPayload.finalTotal}</p>
-              <p className="font-mono text-[10px] break-all text-[#8C6D62]">
-                <strong>Integrity Hash:</strong> {stagedOrderPayload.orderIntegrityHash}
-              </p>
-            </div>
-
-            <div className="text-[11px] text-[#7A5B50] space-y-1">
-              <p className="flex items-center gap-1.5 text-green-700 font-semibold">
-                <CheckCircle className="w-3.5 h-3.5" /> 256-bit cryptographic signature verified.
-              </p>
-              <p>Your unique access passkey will be issued upon payment confirmation to protect your delivery address from unauthorized changes.</p>
-            </div>
-
-            <div className="flex justify-end space-x-2 pt-4">
+          <div className="bg-white rounded-3xl max-w-md w-full p-5 sm:p-6 space-y-4 border border-[#EDE4DC] shadow-2xl max-h-[92vh] overflow-y-auto">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between border-b border-[#F2E8DF] pb-3">
+              <div className="flex items-center space-x-2.5 text-[#3A1C16]">
+                {stagedOrderPayload.paymentMethod === 'Cash on Delivery' ? (
+                  <ShieldCheck className="w-5 h-5 text-[#D99B26]" />
+                ) : (
+                  <QrCode className="w-5 h-5 text-[#D99B26]" />
+                )}
+                <div>
+                  <h3 className="font-serif font-bold text-base text-[#3A1C16]">
+                    {stagedOrderPayload.paymentMethod === 'Cash on Delivery'
+                      ? 'Confirm Cash on Delivery'
+                      : 'Scan & Pay via UPI'}
+                  </h3>
+                  <p className="text-[10px] text-[#8C6D62]">Order ID: {stagedOrderPayload.orderId}</p>
+                </div>
+              </div>
               <button
                 type="button"
                 onClick={() => setPaymentSecurityModal(false)}
-                className="px-4 py-2 text-xs font-bold text-[#8C6D62] hover:bg-[#FAF3EB] rounded-xl"
+                className="p-1 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* ONLINE PAYMENT: Display Authentic UPI QR Code */}
+            {stagedOrderPayload.paymentMethod !== 'Cash on Delivery' ? (
+              <div className="space-y-3">
+                {/* Bank Header matching user's bank account */}
+                <div className="bg-[#FAF7F3] border border-[#EDE4DC] rounded-2xl p-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-2.5">
+                    <div className="w-9 h-9 rounded-full bg-orange-100 flex items-center justify-center font-bold text-orange-700 text-xs border border-orange-200">
+                      BOB
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="font-bold text-xs text-[#3A1C16]">Bank of Baroda - 7707</span>
+                        <span className="text-[9px] bg-green-100 text-green-800 font-bold px-1.5 py-0.2 rounded-full">Primary</span>
+                      </div>
+                      <span className="text-[10px] text-[#8C6D62]">Official Business UPI Channel</span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[10px] text-[#8C6D62] block">Amount to Pay</span>
+                    <span className="font-serif font-bold text-base text-[#C5892F]">₹{stagedOrderPayload.finalTotal}</span>
+                  </div>
+                </div>
+
+                {/* QR Code Container */}
+                <div className="bg-white border-2 border-dashed border-[#D8C7B9] rounded-2xl p-3 text-center space-y-1.5">
+                  <img
+                    src="/images/upi_qr.png"
+                    alt="Bank of Baroda UPI QR Code - 9535839261@nyes"
+                    className="w-52 h-auto mx-auto rounded-xl shadow-xs"
+                  />
+                  <p className="text-[11px] text-[#7A5B50]">
+                    Scan using <strong>GPay, PhonePe, Paytm</strong>, or any UPI app
+                  </p>
+                </div>
+
+                {/* UPI ID Bar with 1-click Copy Button */}
+                <div className="bg-[#FAF3EB] border border-[#E8DFD8] p-2.5 rounded-xl flex items-center justify-between text-xs">
+                  <div>
+                    <span className="text-[10px] text-[#8C6D62] block">UPI ID:</span>
+                    <span className="font-mono font-bold text-[#3A1C16] text-xs">9535839261@nyes</span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={handleCopyUpi}
+                    className="px-2.5 py-1.5 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] rounded-lg text-xs font-bold flex items-center gap-1.5 transition shadow-xs"
+                  >
+                    {copiedUpi ? <Check className="w-3.5 h-3.5 text-green-400" /> : <Copy className="w-3.5 h-3.5 text-[#D99B26]" />}
+                    <span>{copiedUpi ? 'Copied!' : 'Copy UPI'}</span>
+                  </button>
+                </div>
+
+                {/* Direct Mobile UPI App Intent Link */}
+                <a
+                  href={`upi://pay?pa=9535839261@nyes&pn=Butter%20and%20Bliss&am=${stagedOrderPayload.finalTotal}&cu=INR`}
+                  className="sm:hidden flex items-center justify-center gap-2 w-full py-2.5 bg-green-700 hover:bg-green-800 text-white text-xs font-bold rounded-xl shadow-xs transition"
+                >
+                  <span>Open in UPI App (GPay / PhonePe)</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+
+                {/* Optional UTR Input */}
+                <div className="space-y-1">
+                  <label className="text-[11px] font-semibold text-[#5C3B30] flex items-center justify-between">
+                    <span>UPI Reference / UTR No. (Optional):</span>
+                    <span className="text-[10px] text-[#8C6D62]">from UPI receipt</span>
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="e.g. 4289XXXXXXXX"
+                    value={upiUtrInput}
+                    onChange={(e) => setUpiUtrInput(e.target.value)}
+                    className="w-full px-3 py-2 text-xs rounded-xl border border-[#D8C7B9] bg-[#FAF7F3] font-mono focus:outline-none focus:ring-1 focus:ring-[#C5892F]"
+                  />
+                </div>
+
+                {/* Order Summary & Security Note */}
+                <div className="text-[10px] text-[#8C6D62] bg-[#FAF7F3] p-2.5 rounded-xl border border-[#EDE4DC] space-y-0.5">
+                  <p><strong>Customer:</strong> {stagedOrderPayload.customerName} ({stagedOrderPayload.mobile})</p>
+                  <p className="font-mono break-all text-[9px]"><strong>SHA-256 Hash:</strong> {stagedOrderPayload.orderIntegrityHash.substring(0, 32)}...</p>
+                </div>
+              </div>
+            ) : (
+              /* CASH ON DELIVERY: Confirmation Box */
+              <div className="space-y-3">
+                <div className="text-xs text-[#5C3B30] space-y-2 bg-[#FAF7F3] p-4 rounded-2xl border border-[#EBDCD1]">
+                  <p><strong>Order ID:</strong> {stagedOrderPayload.orderId}</p>
+                  <p><strong>Recipient:</strong> {stagedOrderPayload.customerName} ({stagedOrderPayload.mobile})</p>
+                  <p><strong>Delivery Destination:</strong> {stagedOrderPayload.address}, {stagedOrderPayload.city}</p>
+                  <p><strong>Amount Payable on Delivery:</strong> ₹{stagedOrderPayload.finalTotal}</p>
+                  <p className="font-mono text-[10px] break-all text-[#8C6D62]">
+                    <strong>Integrity Hash:</strong> {stagedOrderPayload.orderIntegrityHash}
+                  </p>
+                </div>
+
+                <div className="text-[11px] text-[#7A5B50] space-y-1 bg-amber-50 p-3 rounded-xl border border-amber-200">
+                  <p className="flex items-center gap-1.5 text-amber-800 font-semibold">
+                    <CheckCircle className="w-3.5 h-3.5" /> No advance payment required for COD.
+                  </p>
+                  <p>You can pay ₹{stagedOrderPayload.finalTotal} via cash or scan UPI with the delivery executive upon arrival.</p>
+                </div>
+              </div>
+            )}
+
+            {/* Bottom Actions */}
+            <div className="flex justify-end space-x-2 pt-2 border-t border-[#F2E8DF]">
+              <button
+                type="button"
+                onClick={() => setPaymentSecurityModal(false)}
+                className="px-4 py-2.5 text-xs font-bold text-[#8C6D62] hover:bg-[#FAF3EB] rounded-xl transition"
               >
                 Cancel
               </button>
@@ -2615,10 +2755,20 @@ function OrderOnlinePage({
                 type="button"
                 disabled={isProcessingPayment}
                 onClick={confirmSecurePayment}
-                className="px-6 py-2.5 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold rounded-xl shadow flex items-center gap-2"
+                className="px-5 py-2.5 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold rounded-xl shadow-lg flex items-center gap-2 transition"
               >
-                {isProcessingPayment ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4 text-[#D99B26]" />}
-                <span>{isProcessingPayment ? 'Validating Signature...' : `Authorize ₹${stagedOrderPayload.finalTotal}`}</span>
+                {isProcessingPayment ? (
+                  <RefreshCw className="w-4 h-4 animate-spin text-[#D99B26]" />
+                ) : (
+                  <CheckCircle className="w-4 h-4 text-[#D99B26]" />
+                )}
+                <span>
+                  {isProcessingPayment
+                    ? 'Verifying Order...'
+                    : stagedOrderPayload.paymentMethod === 'Cash on Delivery'
+                    ? 'Confirm COD Order'
+                    : `I Have Paid ₹${stagedOrderPayload.finalTotal} • Submit Order`}
+                </span>
               </button>
             </div>
           </div>
@@ -3295,7 +3445,7 @@ function ContactAndTrackPage({ orders, setOrders, customerTokens, isAdmin, showT
                 <Mail className="w-5 h-5 text-[#C5892F] shrink-0 mt-0.5" />
                 <div>
                   <p className="font-bold text-[#3A1C16]">Direct Email</p>
-                  <p>orders@butterandbliss.in</p>
+                  <a href="mailto:hanamantmantur006@gmail.com" className="text-xs text-[#8C6D62] hover:text-[#C5892F] hover:underline break-all">hanamantmantur006@gmail.com</a>
                 </div>
               </div>
             </div>
