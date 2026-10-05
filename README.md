@@ -75,7 +75,9 @@ npm run preview
 ## 🔐 Credentials & Defaults
 
 - **Admin Portal Passcode**: `bliss2026`
+- **Customer Support & Orders Email**: [hanamantmantur006@gmail.com](mailto:hanamantmantur006@gmail.com)
 - **Customer Concierge WhatsApp**: `+91 95358 39261`
+- **Official UPI Payment ID**: `9535839261@nyes` (Bank of Baroda - 7707)
 - **Active Promo Codes**:
   - `BLISS10` (10% OFF on orders > ₹499)
   - `FESTIVE20` (20% OFF on orders > ₹1200)
