@@ -7,10 +7,24 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies and Build
 node_modules
 dist
 dist-ssr
 *.local
+
+# Secrets and Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*
+!.env.example
+
+# Netlify
+.netlify
+.netlify/*
 
 # Editor directories and files
 .vscode/*
@@ -22,3 +36,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Security & Private keys
+*.pem
+*.key
+*.cert
+.system_generated

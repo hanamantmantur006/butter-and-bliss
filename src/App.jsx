@@ -915,6 +915,71 @@ async function computeOrderIntegrityChecksum(orderData) {
   return await generateSha256(serialized);
 }
 
+// Security: XSS & HTML injection sanitization helpers
+function sanitizePlainText(str) {
+  if (typeof str !== 'string') return '';
+  return str.replace(/<[^>]*>?/gm, '').replace(/javascript:/gi, '').trim();
+}
+
+function sanitizeHtml(str) {
+  if (typeof str !== 'string') return '';
+  return str
+    .replace(/<[^>]*>?/gm, '')
+    .replace(/[&<>"'/]/g, (s) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+      '/': '&#x2F;'
+    }[s]))
+    .trim();
+}
+
+// Security: Salted SHA-256 Hash for Admin Authentication
+// Passcode is verified cryptographically without exposing plaintext secrets
+const ADMIN_PASS_SALT = 'bnb_salt_sec_2026_';
+const ADMIN_PASS_HASH = 'c8244272cd0b1716985dfe0f3928206bc22ca7a048fd8f9fb14cba52d36b75ea';
+
+async function verifyAdminCredentials(inputPasscode) {
+  if (!inputPasscode || typeof inputPasscode !== 'string') return false;
+  const computedHash = await generateSha256(ADMIN_PASS_SALT + inputPasscode.trim());
+  return computedHash === ADMIN_PASS_HASH;
+}
+
+// Secure Admin Session Management with Expiry Verification
+function getStoredAdminSession() {
+  try {
+    const raw = sessionStorage.getItem('bnb_admin_session');
+    if (!raw) return null;
+    const session = JSON.parse(raw);
+    if (!session || !session.token || !session.expiresAt) return null;
+    if (Date.now() > session.expiresAt) {
+      sessionStorage.removeItem('bnb_admin_session');
+      return null;
+    }
+    return session;
+  } catch {
+    sessionStorage.removeItem('bnb_admin_session');
+    return null;
+  }
+}
+
+function setStoredAdminSession(sessionData) {
+  try {
+    sessionStorage.setItem('bnb_admin_session', JSON.stringify(sessionData));
+  } catch (e) {
+    console.error('Failed to store session', e);
+  }
+}
+
+function clearStoredAdminSession() {
+  try {
+    sessionStorage.removeItem('bnb_admin_session');
+    sessionStorage.removeItem('bnb_admin_auth');
+  } catch {}
+}
+
 const INITIAL_ORDERS = [
   {
     orderId: 'BNB-2026-8812',
@@ -1055,12 +1120,20 @@ export default function App() {
     }
   });
 
-  // Admin Authentication State
+  // Admin Authentication State (Secure Token-Based & Auto-Expiring)
   const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(() => {
-    return sessionStorage.getItem('bnb_admin_auth') === 'true';
+    return Boolean(getStoredAdminSession());
   });
   const [adminPinInput, setAdminPinInput] = useState('');
   const [adminPinError, setAdminPinError] = useState('');
+  const [adminLockoutUntil, setAdminLockoutUntil] = useState(() => {
+    const stored = sessionStorage.getItem('bnb_admin_lockout');
+    return stored ? Number(stored) : 0;
+  });
+  const [adminAttempts, setAdminAttempts] = useState(() => {
+    const stored = sessionStorage.getItem('bnb_admin_attempts');
+    return stored ? Number(stored) : 0;
+  });
 
   // Discount Coupons
   const [coupons, setCoupons] = useState([
@@ -1390,14 +1463,22 @@ export default function App() {
         {currentPage === 'admin' && (
           <AdminDashboardPage
             isAuthenticated={isAdminAuthenticated}
-            setIsAuthenticated={(val) => {
+            setIsAuthenticated={(val, sessionPayload) => {
               setIsAdminAuthenticated(val);
-              sessionStorage.setItem('bnb_admin_auth', val ? 'true' : 'false');
+              if (val && sessionPayload) {
+                setStoredAdminSession(sessionPayload);
+              } else if (!val) {
+                clearStoredAdminSession();
+              }
             }}
             adminPinInput={adminPinInput}
             setAdminPinInput={setAdminPinInput}
             adminPinError={adminPinError}
             setAdminPinError={setAdminPinError}
+            adminLockoutUntil={adminLockoutUntil}
+            setAdminLockoutUntil={setAdminLockoutUntil}
+            adminAttempts={adminAttempts}
+            setAdminAttempts={setAdminAttempts}
             orders={orders}
             setOrders={setOrders}
             products={products}
@@ -2179,14 +2260,22 @@ function OrderOnlinePage({
       return;
     }
 
+    const cleanFullName = sanitizePlainText(formData.fullName);
+    const cleanMobile = formData.mobile.replace(/\D/g, '').slice(0, 10);
+    const cleanEmail = sanitizePlainText(formData.email);
+    const cleanAddress = sanitizePlainText(formData.address);
+    const cleanCity = sanitizePlainText(formData.city);
+    const cleanPincode = formData.pincode.replace(/\D/g, '').slice(0, 6);
+    const cleanInstructions = sanitizePlainText(formData.instructions);
+
     const errors = {};
-    if (!formData.fullName.trim()) errors.fullName = 'Full Name is required.';
-    if (!formData.mobile.trim() || !/^\d{10}$/.test(formData.mobile.trim())) {
+    if (!cleanFullName) errors.fullName = 'Full Name is required.';
+    if (!cleanMobile || !/^\d{10}$/.test(cleanMobile)) {
       errors.mobile = 'Enter a valid 10-digit mobile number.';
     }
     if (deliveryType === 'Home Delivery') {
-      if (!formData.address.trim()) errors.address = 'Delivery address is required.';
-      if (!formData.pincode.trim() || !/^\d{6}$/.test(formData.pincode.trim())) {
+      if (!cleanAddress) errors.address = 'Delivery address is required.';
+      if (!cleanPincode || !/^\d{6}$/.test(cleanPincode)) {
         errors.pincode = 'Valid 6-digit PIN code required.';
       }
     }
@@ -2223,18 +2312,18 @@ function OrderOnlinePage({
     const verifiedFinalTotal = Math.max(0, verifiedSubtotal - verifiedDiscount + verifiedDeliveryFee);
 
     const randomId = Math.floor(1000 + Math.random() * 9000);
-    const orderId = `BNB-2026-${randomId}`;
-    const custKey = `pass_${generateCustomerPasskey().substring(0, 12)}`;
+    let orderId = `BNB-2026-${randomId}`;
+    let custKey = `pass_${generateCustomerPasskey().substring(0, 12)}`;
 
     const candidateOrder = {
       orderId,
       date: formData.orderDate,
-      customerName: formData.fullName,
-      mobile: formData.mobile,
-      email: formData.email,
-      address: deliveryType === 'Home Delivery' ? formData.address : 'Store Pickup at Indiranagar Flagship',
-      city: formData.city,
-      pincode: formData.pincode,
+      customerName: cleanFullName,
+      mobile: cleanMobile,
+      email: cleanEmail,
+      address: deliveryType === 'Home Delivery' ? cleanAddress : 'Store Pickup at Indiranagar Flagship',
+      city: cleanCity,
+      pincode: cleanPincode,
       deliveryType,
       timeSlot: formData.timeSlot,
       status: 'Order Received',
@@ -2244,11 +2333,50 @@ function OrderOnlinePage({
       discount: verifiedDiscount,
       finalTotal: verifiedFinalTotal,
       paymentMethod,
-      instructions: formData.instructions,
+      instructions: cleanInstructions,
       custKey
     };
 
-    candidateOrder.orderIntegrityHash = await computeOrderIntegrityChecksum(candidateOrder);
+    // Attempt authoritative serverless backend calculation and validation
+    try {
+      const apiRes = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: cleanFullName,
+          mobile: cleanMobile,
+          email: cleanEmail,
+          address: candidateOrder.address,
+          city: cleanCity,
+          pincode: cleanPincode,
+          deliveryType,
+          orderDate: formData.orderDate,
+          timeSlot: formData.timeSlot,
+          paymentMethod,
+          instructions: cleanInstructions,
+          cartItems: verifiedItems,
+          appliedCoupon: appliedCoupon ? appliedCoupon.code : null
+        })
+      });
+      if (apiRes.ok) {
+        const serverData = await apiRes.json();
+        if (serverData && serverData.orderId) {
+          candidateOrder.orderId = serverData.orderId;
+          candidateOrder.orderIntegrityHash = serverData.orderIntegrityHash;
+          candidateOrder.custKey = serverData.custKey;
+          candidateOrder.finalTotal = serverData.finalTotal;
+        }
+      } else if (apiRes.status === 429) {
+        showToast('Too many order requests. Please wait a moment.');
+        return;
+      }
+    } catch {
+      // Local cryptographic integrity fallback
+    }
+
+    if (!candidateOrder.orderIntegrityHash) {
+      candidateOrder.orderIntegrityHash = await computeOrderIntegrityChecksum(candidateOrder);
+    }
 
     setStagedOrderPayload(candidateOrder);
     setPaymentSecurityModal(true);
@@ -2810,17 +2938,17 @@ function CustomCakesPage({ onSubmitCustomOrder }) {
     e.preventDefault();
     const newInquiry = {
       id: `CR-${Math.floor(100 + Math.random() * 900)}`,
-      customerName: formData.name,
-      mobile: formData.mobile,
-      email: formData.email,
-      type: formData.type,
-      flavor: formData.flavor,
-      weight: formData.weight,
-      dietary: formData.dietary,
-      message: formData.cakeMessage,
-      eventDate: formData.eventDate,
-      budget: formData.budget,
-      instructions: formData.design,
+      customerName: sanitizePlainText(formData.name),
+      mobile: formData.mobile.replace(/\D/g, '').slice(0, 10),
+      email: sanitizePlainText(formData.email),
+      type: sanitizePlainText(formData.type),
+      flavor: sanitizePlainText(formData.flavor),
+      weight: sanitizePlainText(formData.weight),
+      dietary: sanitizePlainText(formData.dietary),
+      message: sanitizePlainText(formData.cakeMessage),
+      eventDate: sanitizePlainText(formData.eventDate),
+      budget: sanitizePlainText(formData.budget),
+      instructions: sanitizePlainText(formData.design),
       referencePhotoUrl: imagePreview,
       status: 'In Review',
       dateAdded: '2026-10-04'
@@ -3151,11 +3279,14 @@ function ContactAndTrackPage({ orders, setOrders, customerTokens, isAdmin, showT
       return;
     }
 
+    const sanitizedAddress = sanitizePlainText(newAddress);
+    const sanitizedInstructions = sanitizePlainText(newInstructions);
+
     // Update with new integrity checksum
     const updatedOrder = {
       ...trackedOrder,
-      address: newAddress,
-      instructions: newInstructions
+      address: sanitizedAddress,
+      instructions: sanitizedInstructions
     };
 
     updatedOrder.orderIntegrityHash = await computeOrderIntegrityChecksum(updatedOrder);
@@ -3164,6 +3295,43 @@ function ContactAndTrackPage({ orders, setOrders, customerTokens, isAdmin, showT
     setTrackedOrder(updatedOrder);
     setIsEditingAddress(false);
     showToast('Delivery address updated and re-verified cryptographically!');
+  };
+
+  const handleContactSubmit = async (e) => {
+    e.preventDefault();
+    const cleanName = sanitizePlainText(contactData.name);
+    const cleanEmail = sanitizePlainText(contactData.email);
+    const cleanPhone = contactData.phone.replace(/\D/g, '').slice(0, 10);
+    const cleanSubject = sanitizePlainText(contactData.subject);
+    const cleanMessage = sanitizePlainText(contactData.message);
+
+    if (!cleanName || !cleanEmail || !cleanMessage) {
+      showToast('Please fill all required fields.');
+      return;
+    }
+
+    try {
+      const resp = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: cleanName,
+          email: cleanEmail,
+          phone: cleanPhone,
+          subject: cleanSubject,
+          message: cleanMessage
+        })
+      });
+      if (resp.status === 429) {
+        showToast('Rate limit: Too many messages sent. Please wait before retrying.');
+        return;
+      }
+    } catch {
+      // Offline fallback
+    }
+
+    setContactSent(true);
+    showToast('Message submitted safely!');
   };
 
   const statusStages = ['Order Received', 'Confirmed', 'Preparing', 'Ready for Pickup / Out for Delivery', 'Delivered'];
@@ -3462,7 +3630,7 @@ function ContactAndTrackPage({ orders, setOrders, customerTokens, isAdmin, showT
                 </button>
               </div>
             ) : (
-              <form onSubmit={(e) => { e.preventDefault(); setContactSent(true); showToast('Message submitted!'); }} className="space-y-4">
+              <form onSubmit={handleContactSubmit} className="space-y-4">
                 <h3 className="font-serif font-bold text-lg text-[#3A1C16] border-b border-[#F2E8DF] pb-3">Send a Message</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
@@ -3546,6 +3714,10 @@ function AdminDashboardPage({
   setAdminPinInput,
   adminPinError,
   setAdminPinError,
+  adminLockoutUntil,
+  setAdminLockoutUntil,
+  adminAttempts,
+  setAdminAttempts,
   orders,
   setOrders,
   products,
@@ -3559,6 +3731,30 @@ function AdminDashboardPage({
   const [activeTab, setActiveTab] = useState('orders');
   const [orderFilter, setOrderFilter] = useState('All');
   const [orderSearch, setOrderSearch] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+
+  // Auto-logout after 30 minutes of inactivity
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    let timer;
+    const resetTimer = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        setIsAuthenticated(false);
+        showToast('Admin session expired due to 30 minutes of inactivity.');
+      }, 30 * 60 * 1000);
+    };
+    resetTimer();
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('click', resetTimer);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('mousemove', resetTimer);
+      window.removeEventListener('keydown', resetTimer);
+      window.removeEventListener('click', resetTimer);
+    };
+  }, [isAuthenticated, setIsAuthenticated, showToast]);
 
   // Product Modal
   const [isProductModalOpen, setIsProductModalOpen] = useState(false);
@@ -3579,14 +3775,88 @@ function AdminDashboardPage({
   const [newCouponPercent, setNewCouponPercent] = useState(15);
   const [newCouponMin, setNewCouponMin] = useState(599);
 
-  const handlePinSubmit = (e) => {
+  const handlePinSubmit = async (e) => {
     e.preventDefault();
-    if (adminPinInput.trim() === 'bliss2026') {
-      setIsAuthenticated(true);
+    setAdminPinError('');
+
+    const now = Date.now();
+    if (adminLockoutUntil && now < adminLockoutUntil) {
+      const remainingMins = Math.ceil((adminLockoutUntil - now) / 60000);
+      setAdminPinError(`Security lockout in effect. Please retry in ${remainingMins} minute(s).`);
+      return;
+    }
+
+    const trimmedInput = adminPinInput.trim();
+    if (!trimmedInput) {
+      setAdminPinError('Please enter the administrative passcode.');
+      return;
+    }
+
+    setIsLoggingIn(true);
+    let authSuccess = false;
+    let sessionPayload = null;
+
+    try {
+      // Authenticate via serverless endpoint with rate-limiting & signed JWT
+      const response = await fetch('/api/admin-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ passcode: trimmedInput })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        authSuccess = true;
+        sessionPayload = {
+          token: data.token,
+          expiresAt: data.expiresAt || (Date.now() + 4 * 60 * 60 * 1000),
+          role: 'admin'
+        };
+      } else if (response.status === 429) {
+        const data = await response.json().catch(() => ({}));
+        setAdminPinError(data.error || 'Too many attempts. Access locked.');
+        setIsLoggingIn(false);
+        return;
+      }
+    } catch {
+      // Local standalone fallback
+    }
+
+    // Cryptographic salted hash verification fallback
+    if (!authSuccess) {
+      const isValid = await verifyAdminCredentials(trimmedInput);
+      if (isValid) {
+        authSuccess = true;
+        sessionPayload = {
+          token: 'bnb_sec_' + generateCustomerPasskey().substring(0, 24),
+          expiresAt: Date.now() + 4 * 60 * 60 * 1000,
+          role: 'admin'
+        };
+      }
+    }
+
+    setIsLoggingIn(false);
+
+    if (authSuccess) {
+      setAdminAttempts(0);
+      sessionStorage.removeItem('bnb_admin_attempts');
+      sessionStorage.removeItem('bnb_admin_lockout');
+      setAdminPinInput('');
       setAdminPinError('');
-      showToast('Admin session authorized.');
+      setIsAuthenticated(true, sessionPayload);
+      showToast('Admin session cryptographically authenticated.');
     } else {
-      setAdminPinError('Invalid passcode. Passcode is bliss2026');
+      const newAttempts = (adminAttempts || 0) + 1;
+      setAdminAttempts(newAttempts);
+      sessionStorage.setItem('bnb_admin_attempts', String(newAttempts));
+      if (newAttempts >= 5) {
+        const lockout = Date.now() + 15 * 60 * 1000;
+        setAdminLockoutUntil(lockout);
+        sessionStorage.setItem('bnb_admin_lockout', String(lockout));
+        setAdminPinError('Maximum attempt limit exceeded. Access locked for 15 minutes.');
+      } else {
+        setAdminPinError(`Invalid credentials. ${5 - newAttempts} attempt(s) remaining.`);
+      }
     }
   };
 
@@ -3717,19 +3987,34 @@ function AdminDashboardPage({
             <div>
               <input
                 type="password"
-                placeholder="Enter Access Passcode (bliss2026)"
+                placeholder="Enter Bakery Management Passcode"
+                autoComplete="current-password"
                 value={adminPinInput}
+                disabled={Boolean(adminLockoutUntil && Date.now() < adminLockoutUntil) || isLoggingIn}
                 onChange={(e) => setAdminPinInput(e.target.value)}
-                className="w-full px-4 py-3 text-center text-sm rounded-xl border border-[#D8C7B9] bg-[#FAF7F3] tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-[#C5892F]"
+                className="w-full px-4 py-3 text-center text-sm rounded-xl border border-[#D8C7B9] bg-[#FAF7F3] tracking-widest font-mono focus:outline-none focus:ring-2 focus:ring-[#C5892F] disabled:opacity-50"
               />
-              {adminPinError && <p className="text-xs text-red-600 mt-2 font-medium">{adminPinError}</p>}
+              {adminPinError && (
+                <div className="flex items-center justify-center gap-1.5 text-xs text-red-600 mt-2 font-medium bg-red-50 py-1.5 px-3 rounded-lg border border-red-100">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                  <span>{adminPinError}</span>
+                </div>
+              )}
             </div>
 
             <button
               type="submit"
-              className="w-full py-3 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold uppercase tracking-wider rounded-xl shadow transition"
+              disabled={Boolean(adminLockoutUntil && Date.now() < adminLockoutUntil) || isLoggingIn}
+              className="w-full py-3 bg-[#3A1C16] hover:bg-[#25100B] text-[#F9EBD2] text-xs font-bold uppercase tracking-wider rounded-xl shadow transition disabled:opacity-50 flex items-center justify-center gap-2"
             >
-              Sign In to Management
+              {isLoggingIn ? (
+                <>
+                  <RefreshCw className="w-3.5 h-3.5 animate-spin" />
+                  <span>Verifying Authorization...</span>
+                </>
+              ) : (
+                <span>Sign In to Management</span>
+              )}
             </button>
           </form>
         </div>
